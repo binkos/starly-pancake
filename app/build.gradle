@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.cobeisfresh.template"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSDKVersion
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+dependencies {
+    implementation project(":domain")
+    implementation project(":data")
+
+    implementation kotlinStdLib
+    implementation appCompat
+    implementation coreKtx
+
+    //design libs
+    implementation material
+    implementation constraint
+
+    //di
+    implementation koinAndroid
+    implementation koinViewModel
+    implementation koinScope
+
+    //arhitecture components
+    implementation lifecycleExtensions
+    implementation lifecycleKtxViewModel
+    implementation lifecycleKtxRuntime
+    implementation lifecycleKtxLivedata
+
+    //coroutines
+    implementation coroutinesCore
+    implementation coroutinesAndroid
+
+    implementation cicerone
+}
