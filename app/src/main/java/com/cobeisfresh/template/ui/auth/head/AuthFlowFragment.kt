@@ -8,6 +8,7 @@ import com.cobeisfresh.template.ui.auth.signin.SignInFragmentScreen
 import com.cobeisfresh.template.ui.base.FlowFragment
 import com.github.terrakok.cicerone.NavigatorHolder
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
 import org.koin.core.qualifier.named
@@ -15,6 +16,8 @@ import org.koin.core.qualifier.named
 class AuthFlowFragment : FlowFragment() {
 
     private val navigatorHolder: NavigatorHolder by inject(named(AUTH_FEATURE))
+
+    val vm: AuthViewModel by viewModel()
 
     override fun viewReady() {}
 
@@ -37,7 +40,7 @@ class AuthFlowFragment : FlowFragment() {
     override fun onPause() {
         navigatorHolder.removeNavigator()
 
-            super.onPause()
+        super.onPause()
     }
 
     override fun onDestroyView() {

@@ -5,11 +5,11 @@ import com.cobeisfresh.template.common.extensions.onClick
 import com.cobeisfresh.template.ui.auth.head.AuthViewModel
 import com.cobeisfresh.template.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_login.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SignInFragment : BaseFragment() {
 
-    private val authViewModel: AuthViewModel by viewModel()
+    private val authViewModel: AuthViewModel by sharedViewModel()
 
     override fun viewReady() {
 
@@ -29,6 +29,10 @@ class SignInFragment : BaseFragment() {
     }
 
     override fun getLayout(): Int = R.layout.fragment_login
+
+    override fun onBackPressed() {
+        authViewModel.finish()
+    }
 
     companion object {
         fun getNewInstance() = SignInFragment()

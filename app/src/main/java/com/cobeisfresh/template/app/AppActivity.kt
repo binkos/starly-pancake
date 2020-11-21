@@ -5,16 +5,15 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.cobeisfresh.template.R
 import com.cobeisfresh.template.common.EMPTY_STRING
 import com.cobeisfresh.template.common.extensions.gone
-import com.cobeisfresh.template.common.extensions.showFragment
 import com.cobeisfresh.template.common.extensions.showSnackBar
 import com.cobeisfresh.template.common.extensions.visible
 import com.cobeisfresh.template.di.APP_MODULE
 import com.cobeisfresh.template.di.appModule
 import com.cobeisfresh.template.routing.app.AppMainNavigator
+import com.cobeisfresh.template.ui.base.FlowFragment
 import com.github.terrakok.cicerone.NavigatorHolder
 import org.koin.android.ext.android.inject
 import org.koin.core.context.loadKoinModules
@@ -26,6 +25,9 @@ class AppActivity : AppCompatActivity() {
     private val appViewModel: AppViewModel by inject()
     private val featureNavigatorHolder: NavigatorHolder by inject(named(APP_MODULE))
     private lateinit var appMainNavigator: AppMainNavigator
+
+    private val currentFlowFragment: FlowFragment?
+        get() = supportFragmentManager.findFragmentById(R.id.fragmentContainer) as FlowFragment?
 
     override fun onCreate(savedInstanceState: Bundle?) {
         loadKoinModules(appModule)
@@ -48,6 +50,10 @@ class AppActivity : AppCompatActivity() {
     override fun onDestroy() {
         unloadKoinModules(appModule)
         super.onDestroy()
+    }
+
+    override fun onBackPressed() {
+        currentFlowFragment?.onBackPressed() ?: appViewModel.finish()
     }
 
     fun showError(@StringRes errorMessage: Int, rootView: View) =
