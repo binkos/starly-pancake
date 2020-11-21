@@ -29,6 +29,10 @@ class SplashFragment : BaseFragment() {
         return R.layout.fragment_onboarding
     }
 
+    override fun onBackPressed() {
+        splashViewModel.finish()
+    }
+
     companion object {
         fun getInstance() = SplashFragment()
     }

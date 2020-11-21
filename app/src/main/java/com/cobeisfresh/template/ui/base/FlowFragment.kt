@@ -5,10 +5,15 @@ import com.github.terrakok.cicerone.androidx.AppNavigator
 
 abstract class FlowFragment : BaseFragment() {
 
-    open lateinit var scope: String
+    private val currentFragment: BaseFragment?
+        get() = childFragmentManager.findFragmentById(R.id.fragmentContainer) as BaseFragment?
 
     override fun getLayout(): Int {
         return R.layout.fragment_flow
+    }
+
+    override fun onBackPressed() {
+        currentFragment?.onBackPressed()
     }
 
     protected val navigator by lazy {

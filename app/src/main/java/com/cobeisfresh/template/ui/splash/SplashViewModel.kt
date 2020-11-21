@@ -20,4 +20,8 @@ class SplashViewModel(
     fun toLogin() {
         appRouter.toAuthFlow()
     }
+
+    fun finish(){
+        appRouter.exit()
+    }
 }

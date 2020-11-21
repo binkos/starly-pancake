@@ -1,7 +1,7 @@
 package com.cobeisfresh.template.di
 
-import com.cobeisfresh.template.ui.auth.head.AuthViewModel
 import com.cobeisfresh.template.ui.auth.head.AuthRouter
+import com.cobeisfresh.template.ui.auth.head.AuthViewModel
 import com.github.terrakok.cicerone.Cicerone
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
@@ -18,7 +18,8 @@ val authModule = module {
         AuthViewModel(
             featureRouter = get(),
             authUseCase = get(),
-            appRouter = get()
+            appRouter = get(),
+            signUpUseCase = get()
         )
     }
 }
