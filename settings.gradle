@@ -1,2 +1,1 @@
-include ':navigation'
 include ':app', ':domain', ':data'

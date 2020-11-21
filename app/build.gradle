@@ -7,7 +7,7 @@ android {
     compileSdkVersion rootProject.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.cobeisfresh.template"
+        applicationId "com.binkos.starlypancacke"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSDKVersion
         versionCode rootProject.versionCode
