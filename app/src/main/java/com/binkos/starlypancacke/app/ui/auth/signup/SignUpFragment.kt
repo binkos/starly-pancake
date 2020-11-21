@@ -1,7 +1,7 @@
 package com.binkos.starlypancacke.app.ui.auth.signup
 
 import android.widget.Toast
-import com.cobeisfresh.template.R
+import com.binkos.starlypancacke.app.R
 import com.binkos.starlypancacke.app.common.extensions.onClick
 import com.binkos.starlypancacke.app.common.extensions.subscribe
 import com.binkos.starlypancacke.app.ui.auth.head.AuthViewModel

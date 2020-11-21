@@ -1,7 +1,7 @@
 package com.binkos.starlypancacke.app.ui.splash
 
 import android.widget.Toast
-import com.cobeisfresh.template.R
+import com.binkos.starlypancacke.app.R
 import com.binkos.starlypancacke.app.ui.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

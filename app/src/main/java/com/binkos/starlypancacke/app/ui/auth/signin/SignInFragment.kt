@@ -1,6 +1,6 @@
 package com.binkos.starlypancacke.app.ui.auth.signin
 
-import com.cobeisfresh.template.R
+import com.binkos.starlypancacke.app.R
 import com.binkos.starlypancacke.app.common.extensions.onClick
 import com.binkos.starlypancacke.app.ui.auth.head.AuthViewModel
 import com.binkos.starlypancacke.app.ui.base.BaseFragment

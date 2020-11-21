@@ -1,6 +1,6 @@
 package com.binkos.starlypancacke.app.ui.base
 
-import com.cobeisfresh.template.R
+import com.binkos.starlypancacke.app.R
 import com.github.terrakok.cicerone.androidx.AppNavigator
 
 abstract class FlowFragment : BaseFragment() {

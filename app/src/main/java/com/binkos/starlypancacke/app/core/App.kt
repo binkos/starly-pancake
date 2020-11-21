@@ -4,7 +4,6 @@ import android.app.Application
 import com.binkos.starlypancacke.app.di.appModule
 import com.binkos.starlypancacke.app.di.authModule
 import com.binkos.starlypancacke.app.di.splashModule
-import com.example.data.di.networkingModule
 import com.binkos.starlypancacke.data.di.preferencesModule
 import com.binkos.starlypancacke.data.di.repositoryModule
 import com.binkos.starlypancacke.domain.di.interactionModule
@@ -26,7 +25,6 @@ class App : Application() {
                     splashModule,
                     appModule,
                     interactionModule,
-                    networkingModule,
                     repositoryModule,
                     authModule,
                     preferencesModule

@@ -37,6 +37,7 @@ class AuthViewModel(
         return liveData {
             if (password != confirmPassword) {
                 emit(OnFailure(FailureReason.INVALID_PASSWORD))
+                return@liveData
             }
 
             val result = withContext(viewModelScope.coroutineContext) {

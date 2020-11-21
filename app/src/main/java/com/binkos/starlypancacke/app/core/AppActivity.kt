@@ -5,14 +5,14 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import com.cobeisfresh.template.R
-import com.cobeisfresh.template.common.EMPTY_STRING
+import com.binkos.starlypancacke.app.R
 import com.binkos.starlypancacke.app.common.extensions.gone
 import com.binkos.starlypancacke.app.common.extensions.showSnackBar
 import com.binkos.starlypancacke.app.common.extensions.visible
 import com.binkos.starlypancacke.app.di.APP_MODULE
 import com.binkos.starlypancacke.app.di.appModule
 import com.binkos.starlypancacke.app.app.AppMainNavigator
+import com.binkos.starlypancacke.app.common.EMPTY_STRING
 import com.binkos.starlypancacke.app.ui.base.FlowFragment
 import com.github.terrakok.cicerone.NavigatorHolder
 import org.koin.android.ext.android.inject
