@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.cobeisfresh.template">
+    package="com.binkos.starlypancacke.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.cobeisfresh.template.app.App"
+        android:name=".core.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".app.AppActivity">
+        <activity android:name="com.binkos.starlypancacke.app.core.AppActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
