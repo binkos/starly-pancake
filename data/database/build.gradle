@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -23,16 +24,14 @@ android {
     }
 }
 
-
 dependencies {
+    implementation kotlinStdLib
     implementation appCompat
+    implementation coreKtx
 
-    //coroutines
     implementation coroutinesCore
-    implementation coroutinesAndroid
 
-    //di
-    implementation koinAndroid
-    implementation koinViewModel
-    implementation koinScope
+    implementation roomRuntime
+    kapt roomCompiler
+    implementation room
 }

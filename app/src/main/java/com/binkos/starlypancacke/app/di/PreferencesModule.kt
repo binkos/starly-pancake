@@ -1,4 +1,4 @@
-package com.binkos.starlypancacke.data.di
+package com.binkos.starlypancacke.app.di
 
 import android.content.Context
 import android.content.SharedPreferences
