@@ -4,9 +4,10 @@ import android.app.Application
 import com.binkos.starlypancacke.app.di.appModule
 import com.binkos.starlypancacke.app.di.authModule
 import com.binkos.starlypancacke.app.di.splashModule
-import com.binkos.starlypancacke.data.di.preferencesModule
-import com.binkos.starlypancacke.data.di.repositoryModule
-import com.binkos.starlypancacke.domain.di.interactionModule
+import com.binkos.starlypancacke.app.di.databaseModule
+import com.binkos.starlypancacke.app.di.preferencesModule
+import com.binkos.starlypancacke.app.di.repositoryModule
+import com.binkos.starlypancacke.app.di.interactionModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -25,9 +26,10 @@ class App : Application() {
                     splashModule,
                     appModule,
                     interactionModule,
+                    databaseModule,
                     repositoryModule,
                     authModule,
-                    preferencesModule
+                    preferencesModule,
                 )
             )
         }

@@ -1,4 +1,4 @@
-package com.binkos.starlypancacke.domain.di
+package com.binkos.starlypancacke.app.di
 
 import com.binkos.starlypancacke.domain.usecase.GetAuthorizeUseCase
 import com.binkos.starlypancacke.domain.usecase.SignInUseCase

@@ -27,7 +27,6 @@ ext {
     ciceroneVersion = '6.4'
 }
 
-
 ext {
     appCompat = "androidx.appcompat:appcompat:$appCompatVersion"
 
@@ -57,7 +56,9 @@ ext {
 
     //database
     roomCompiler = "androidx.room:room-compiler:$roomVersion"
+    roomRuntime = "androidx.room:room-runtime:$roomVersion"
     room = "androidx.room:room-ktx:$roomVersion"
+
 
     cicerone = "com.github.terrakok:cicerone:$ciceroneVersion"
 }

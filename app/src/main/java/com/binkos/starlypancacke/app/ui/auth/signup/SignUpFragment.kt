@@ -19,9 +19,9 @@ class SignUpFragment : BaseFragment() {
 
         signUpButton.onClick {
             vm.signUp(
-                loginInputEditText.text.toString(),
-                passwordInputEditText.text.toString(),
-                confirmPasswordInputEditText.text.toString()
+                loginInputEditText.text.toString().trim(),
+                passwordInputEditText.text.toString().trim(),
+                confirmPasswordInputEditText.text.toString().trim()
             )
                 .subscribe(viewLifecycleOwner) {
                     when (it) {
