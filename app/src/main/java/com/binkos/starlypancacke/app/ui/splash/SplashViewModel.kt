@@ -24,4 +24,8 @@ class SplashViewModel(
     fun finish(){
         appRouter.exit()
     }
+
+    fun toMainFlow(){
+        appRouter.toMainFlow()
+    }
 }

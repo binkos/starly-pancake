@@ -15,5 +15,6 @@
   <string name="password">Пароль</string>
   <string name="confirm_password">Подтвердить Пароль</string>
   <string name="login">Логин</string>
-    <string name="sign_up">Зарегистрироваться</string>
+  <string name="sign_up">Зарегистрироваться</string>
+  <string name="maps_api_key">AIzaSyB3yYK5E6BAgY87Y47zNd60TE3MBjNrvok</string>
 </resources>

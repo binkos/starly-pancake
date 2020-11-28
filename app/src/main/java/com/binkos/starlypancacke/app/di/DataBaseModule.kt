@@ -16,5 +16,11 @@ val databaseModule = module {
             .build()
     }
     factory { get<Database>().userDao() }
-    single<RemoteSource> { RoomRemoteSource(get()) }
+    factory { get<Database>().organizationDao() }
+    single<RemoteSource> {
+        RoomRemoteSource(
+            userDao = get(),
+            organizationDao = get()
+        )
+    }
 }

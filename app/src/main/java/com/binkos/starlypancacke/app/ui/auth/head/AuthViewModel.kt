@@ -87,7 +87,7 @@ class AuthViewModel(
     }
 
     fun toMainFlow() {
-        appRouter.launch()
+        appRouter.toMainFlow()
     }
 
     fun back() {
