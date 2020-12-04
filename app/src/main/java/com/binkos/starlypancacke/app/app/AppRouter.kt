@@ -15,7 +15,7 @@ class AppRouter : Router() {
         newRootScreen(AuthFlowFragmentScreen())
     }
 
-    fun toMainFlow() {
-        newRootScreen(MainFlowScreen())
+    fun toMainFlow(name: String? = null) {
+        newRootScreen(MainFlowScreen(name))
     }
 }

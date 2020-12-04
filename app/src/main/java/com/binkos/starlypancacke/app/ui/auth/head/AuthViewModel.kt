@@ -3,6 +3,7 @@ package com.binkos.starlypancacke.app.ui.auth.head
 import android.util.Log
 import androidx.lifecycle.*
 import com.binkos.starlypancacke.app.app.AppRouter
+import com.binkos.starlypancacke.app.common.extensions.launch
 import com.binkos.starlypancacke.app.ui.auth.signin.SignInFragmentScreen
 import com.binkos.starlypancacke.app.ui.auth.signup.routing.SignUpFragmentScreen
 import com.binkos.starlypancacke.domain.model.AuthState
@@ -32,7 +33,8 @@ class AuthViewModel(
         if (email.isEmpty() || password.isEmpty()) {
             userAuthLiveData.value = OnFailure(FailureReason.INVALID_CREDENTIALS)
         }
-        viewModelScope.launch {
+
+        launch {
             authUseCase
                 .signIn(email, password)
                 .flowOn(Dispatchers.IO)

@@ -34,4 +34,5 @@ dependencies {
     implementation roomRuntime
     kapt roomCompiler
     implementation room
+    implementation gson
 }

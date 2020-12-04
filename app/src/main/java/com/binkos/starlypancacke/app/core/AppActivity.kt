@@ -1,18 +1,19 @@
 package com.binkos.starlypancacke.app.core
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import com.binkos.starlypancacke.app.R
+import com.binkos.starlypancacke.app.app.AppMainNavigator
+import com.binkos.starlypancacke.app.common.EMPTY_STRING
 import com.binkos.starlypancacke.app.common.extensions.gone
 import com.binkos.starlypancacke.app.common.extensions.showSnackBar
 import com.binkos.starlypancacke.app.common.extensions.visible
 import com.binkos.starlypancacke.app.di.APP_MODULE
 import com.binkos.starlypancacke.app.di.appModule
-import com.binkos.starlypancacke.app.app.AppMainNavigator
-import com.binkos.starlypancacke.app.common.EMPTY_STRING
 import com.binkos.starlypancacke.app.ui.base.FlowFragment
 import com.github.terrakok.cicerone.NavigatorHolder
 import org.koin.android.ext.android.inject
@@ -32,23 +33,34 @@ class AppActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         loadKoinModules(appModule)
         appMainNavigator = AppMainNavigator(this, R.id.fragmentContainer)
+
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_container)
-        if (savedInstanceState == null) appViewModel.launch()
+        if (savedInstanceState == null ) appViewModel.handleIntent(intent)
     }
 
     override fun onResumeFragments() {
         super.onResumeFragments()
+
         featureNavigatorHolder.setNavigator(appMainNavigator)
     }
 
     override fun onPause() {
         super.onPause()
+
         featureNavigatorHolder.removeNavigator()
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+
+        appViewModel.onNewIntent(intent)
     }
 
     override fun onDestroy() {
         unloadKoinModules(appModule)
+
         super.onDestroy()
     }
 

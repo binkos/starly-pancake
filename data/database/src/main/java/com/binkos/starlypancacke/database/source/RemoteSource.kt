@@ -12,7 +12,7 @@ interface RemoteSource {
 
     fun getUsers(): Flow<List<UserDb>>
 
-    fun getOrganizations(): Flow<List<OrganizationDb>>
+    fun getOrganizations(): List<OrganizationDb>
 
     fun getOrganizationByName(name: String): Flow<OrganizationDb>
 }

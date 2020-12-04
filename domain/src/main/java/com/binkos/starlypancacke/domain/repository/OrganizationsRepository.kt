@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface OrganizationsRepository {
 
-    suspend fun get(): Flow<List<Organization>>
+    suspend fun get(): List<Organization>
 
     suspend fun getByName(name: String): Flow<Organization>
 

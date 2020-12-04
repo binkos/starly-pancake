@@ -1,8 +1,11 @@
 package com.binkos.starlypancacke.app.ui.main
 
 import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.binkos.starlypancacke.app.app.AppRouter
+import com.binkos.starlypancacke.app.common.extensions.launch
 import com.binkos.starlypancacke.domain.model.Organization
 import com.binkos.starlypancacke.domain.usecase.GetOrganizationsUseCase
 import kotlinx.coroutines.Dispatchers
@@ -10,8 +13,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MainMapViewModel(
     private val appRouter: AppRouter,
@@ -27,7 +28,7 @@ class MainMapViewModel(
     }
 
     fun launchMapFragment() {
-        viewModelScope.launch(Job() + Dispatchers.Main) {
+        launch(Job() + Dispatchers.Main) {
             getOrganizationsUseCase
                 .execute()
                 .flowOn(Dispatchers.IO)
@@ -40,19 +41,17 @@ class MainMapViewModel(
         }
     }
 
-    fun findOrganization(name: String): LiveData<Organization> {
-        return liveData {
-            withContext(Job() + Dispatchers.Main) {
-                getOrganizationsUseCase
-                    .getOrganization(name)
-                    .flowOn(Dispatchers.IO)
-                    .catch {
-                        Log.e(this::class.java.toString(), it.message.toString())
-                    }
-                    .collect {
-                        emit(it)
-                    }
-            }
+    fun launchOrgSearch(name: String) {
+        launch(Job() + Dispatchers.Main) {
+            getOrganizationsUseCase
+                .find(name)
+                .flowOn(Dispatchers.IO)
+                .catch {
+                    Log.e(this::class.java.toString(), it.message.toString())
+                }
+                .collect {
+                    organizationsLiveData.value = it
+                }
         }
     }
 

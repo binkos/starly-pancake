@@ -8,6 +8,9 @@ internal class OrganizationDbParams {
     companion object {
         const val TABLE_NAME = "organization"
         const val ID = "id"
+        const val ICON = "icon"
+        const val PHOTOS = "photos"
+        const val DESCRIPTION = "description"
         const val NAME = "name"
         const val LONGITUDE = "longitude"
         const val LATITUDE = "latitude"
@@ -28,5 +31,14 @@ class OrganizationDb(
     val latitude: Double,
 
     @ColumnInfo(name = OrganizationDbParams.LONGITUDE)
-    val longitude: Double
+    val longitude: Double,
+
+    @ColumnInfo(name = OrganizationDbParams.ICON)
+    val icon: String,
+
+    @ColumnInfo(name = OrganizationDbParams.PHOTOS)
+    val photos: List<String>,
+
+    @ColumnInfo(name = OrganizationDbParams.DESCRIPTION)
+    val description: String
 )

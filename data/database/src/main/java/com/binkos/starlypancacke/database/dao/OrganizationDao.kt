@@ -12,7 +12,7 @@ abstract class OrganizationDao {
 
     @Transaction
     @Query("SELECT * FROM ${OrganizationDbParams.TABLE_NAME}")
-    abstract fun observeOrganizations(): Flow<List<OrganizationDb>>
+    abstract fun observeOrganizations(): List<OrganizationDb>
 
     @Transaction
     @Query("SELECT * FROM ${OrganizationDbParams.TABLE_NAME} WHERE ${OrganizationDbParams.NAME} = (:name)")

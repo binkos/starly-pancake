@@ -12,14 +12,51 @@ class OrganizationRepositoryImpl(
     private val contextProvider: CoroutineContextProvider
 ) : OrganizationsRepository {
 
-    override suspend fun get(): Flow<List<Organization>> {
-        return flowOf(
-            listOf(
-                Organization("1", 53.909581, 27.42733),
-                Organization("2", 53.909181, 27.42533),
-                Organization("3", 53.909981, 27.42433),
-                Organization("4", 53.907581, 27.4283),
-                Organization("5", 53.906581, 27.42133)
+    override suspend fun get(): List<Organization> {
+        return listOf(
+            Organization(
+                name = "q231r4g",
+                icon = "https://img.the-village.me/the-village.me/post_image-image/0DuIhJI5CCl8e_5OA2CZng-wide.jpg",
+                photos = listOf(
+                    "https://img.the-village.me/the-village.me/post_image-image/RXbHzV7M6TAUf5-cd2zUkg-wide.jpg",
+                    "https://img.the-village.me/the-village.me/post_image-image/8Ed-XaC4rNjvnGQ5YgMHSg-wide.jpg",
+                    "https://img.the-village.me/the-village.me/post_image-image/KNlNQ9sJHCnTU25GBNQGNg-wide.jpg"
+                ),
+                description = "«Мама Стифлера» — знаковое для поколения двухтысячных выражение. Те, кто смотрел «Американский пирог», наверняка помнят знойную Дженнифер Кулидж в этой роли. Считается, что именно благодаря «маме Стифлера» в обиходе появилось слово «милфа» (MILF), означающее опытную взрослую женщину, которая не растеряла своей привлекательности и по-прежнему представляет интерес для мужчин (зачастую — моложе себя). Кстати, один из самых популярных поисковых запросов на порносайтах.",
+                latitude = 53.909581,
+                longitude = 27.4293
+            ),
+            Organization(
+                name = "2",
+                icon = "",
+                photos = listOf(""),
+                description = "",
+                latitude = 53.909581,
+                longitude = 27.4293
+            ),
+            Organization(
+                name = "3",
+                icon = "",
+                photos = listOf(""),
+                description = "",
+                latitude = 53.909571,
+                longitude = 27.42733
+            ),
+            Organization(
+                name = "4",
+                icon = "",
+                photos = listOf(""),
+                description = "",
+                latitude = 53.909561,
+                longitude = 27.4243
+            ),
+            Organization(
+                name = "5",
+                icon = "",
+                photos = listOf(""),
+                description = "",
+                latitude = 53.909551,
+                longitude = 27.425
             )
         )
 //        return remoteSource
@@ -30,7 +67,18 @@ class OrganizationRepositoryImpl(
     override suspend fun getByName(name: String): Flow<Organization> {
 
         return flowOf(
-            Organization("Huy", 53.907581, 27.4283)
+            Organization(
+                name = "q231r4g",
+                icon = "https://img.the-village.me/the-village.me/post_image-image/0DuIhJI5CCl8e_5OA2CZng-wide.jpg",
+                photos = listOf(
+                    "https://img.the-village.me/the-village.me/post_image-image/RXbHzV7M6TAUf5-cd2zUkg-wide.jpg",
+                    "https://img.the-village.me/the-village.me/post_image-image/8Ed-XaC4rNjvnGQ5YgMHSg-wide.jpg",
+                    "https://img.the-village.me/the-village.me/post_image-image/KNlNQ9sJHCnTU25GBNQGNg-wide.jpg"
+                ),
+                description = "«Мама Стифлера» — знаковое для поколения двухтысячных выражение. Те, кто смотрел «Американский пирог», наверняка помнят знойную Дженнифер Кулидж в этой роли. Считается, что именно благодаря «маме Стифлера» в обиходе появилось слово «милфа» (MILF), означающее опытную взрослую женщину, которая не растеряла своей привлекательности и по-прежнему представляет интерес для мужчин (зачастую — моложе себя). Кстати, один из самых популярных поисковых запросов на порносайтах.",
+                latitude = 53.909581,
+                longitude = 27.4293
+            )
         )
 
 //        return remoteSource

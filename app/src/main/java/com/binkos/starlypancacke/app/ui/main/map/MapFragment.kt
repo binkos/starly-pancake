@@ -1,6 +1,9 @@
 package com.binkos.starlypancacke.app.ui.main.map
 
+import android.os.Bundle
 import com.binkos.starlypancacke.app.R
+import com.binkos.starlypancacke.app.common.extensions.tryToGetString
+import com.binkos.starlypancacke.app.common.extensions.tryToGetStringOrNull
 import com.binkos.starlypancacke.app.ui.base.BaseFragment
 import com.binkos.starlypancacke.app.ui.main.MainMapViewModel
 import com.google.android.libraries.maps.GoogleMap
@@ -21,7 +24,13 @@ class MapFragment : BaseFragment(), OnMapReadyCallback {
     override fun viewReady() {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-        vm.launchMapFragment()
+
+        val orgName = tryToGetStringOrNull(ORGANIZATION_NAME_KEY)
+        if (orgName == null) {
+            vm.launchMapFragment()
+        } else {
+            vm.launchOrgSearch(orgName)
+        }
     }
 
     override fun onBackPressed() {
@@ -47,5 +56,16 @@ class MapFragment : BaseFragment(), OnMapReadyCallback {
                 mapDrawer.cleanMarkers()
                 mapDrawer.drawMarkers(it)
             }
+    }
+
+    companion object {
+        private const val ORGANIZATION_NAME_KEY = "ORGANIZATION_NAME"
+
+        fun getInstance(name: String?) = MapFragment().apply {
+            arguments = Bundle()
+                .apply {
+                    putString(ORGANIZATION_NAME_KEY, name)
+                }
+        }
     }
 }

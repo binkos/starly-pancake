@@ -25,7 +25,7 @@ class RoomRemoteSource(
         return userDao.observeUsers()
     }
 
-    override fun getOrganizations(): Flow<List<OrganizationDb>> {
+    override fun getOrganizations(): List<OrganizationDb> {
         return organizationDao.observeOrganizations()
     }
 

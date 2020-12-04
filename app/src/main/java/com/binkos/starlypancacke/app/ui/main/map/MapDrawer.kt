@@ -39,6 +39,6 @@ class MapDrawer {
     private fun createMapMarker(organization: Organization, order: Int): MarkerOptions {
         return MarkerOptions()
             .position(LatLng(organization.latitude, organization.longitude))
-            .title(order.toString())
+            .title(organization.name)
     }
 }

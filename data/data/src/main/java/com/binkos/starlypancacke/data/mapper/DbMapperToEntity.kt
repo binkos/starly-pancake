@@ -7,6 +7,13 @@ import com.binkos.starlypancacke.domain.model.User
 
 fun UserDb.toDomain() = User(email = email, password = password)
 
-fun OrganizationDb.toDomain() = Organization(name, longitude, latitude)
+fun OrganizationDb.toDomain() = Organization(
+    name = name,
+    icon = icon,
+    photos = photos,
+    description = description,
+    latitude = latitude,
+    longitude = longitude
+)
 
 fun List<OrganizationDb>.toDomain() = this.map { it.toDomain() }

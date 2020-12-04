@@ -3,9 +3,8 @@ package com.binkos.starlypancacke.app.ui.main
 import android.os.Bundle
 import com.binkos.starlypancacke.app.R
 import com.binkos.starlypancacke.app.common.extensions.setLaunchScreen
-import com.binkos.starlypancacke.app.di.AUTH_FEATURE
+import com.binkos.starlypancacke.app.common.extensions.tryToGetStringOrNull
 import com.binkos.starlypancacke.app.di.MAIN_FLOW_FEATURE
-import com.binkos.starlypancacke.app.di.authModule
 import com.binkos.starlypancacke.app.di.mainModule
 import com.binkos.starlypancacke.app.ui.base.FlowFragment
 import com.github.terrakok.cicerone.NavigatorHolder
@@ -18,7 +17,6 @@ class MainFlowFragment : FlowFragment() {
 
     private val navigatorHolder: NavigatorHolder by inject(named(MAIN_FLOW_FEATURE))
 
-
     override fun getLayout(): Int {
         return R.layout.fragment_main_flow
     }
@@ -28,7 +26,7 @@ class MainFlowFragment : FlowFragment() {
 
         if (savedInstanceState == null) {
             loadKoinModules(mainModule)
-            navigator.setLaunchScreen(MapFragmentScreen())
+            navigator.setLaunchScreen(MapFragmentScreen(tryToGetStringOrNull(ORGANIZATION_NAME_KEY)))
         }
     }
 
@@ -55,6 +53,13 @@ class MainFlowFragment : FlowFragment() {
     }
 
     companion object {
-        fun getInstance() = MainFlowFragment()
+        private const val ORGANIZATION_NAME_KEY = "ORGANIZATION_NAME"
+
+        fun getInstance(name: String?) = MainFlowFragment().apply {
+            arguments = Bundle()
+                .apply {
+                    putString(ORGANIZATION_NAME_KEY, name)
+                }
+        }
     }
 }
