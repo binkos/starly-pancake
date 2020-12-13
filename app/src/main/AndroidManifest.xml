@@ -35,6 +35,11 @@
 
         <data
             android:host="starly-pancake"
+            android:pathPrefix="/organization"
+            android:scheme="https" />
+
+        <data
+            android:host="starly-pancake"
             android:pathPrefix="/admin"
             android:scheme="app" />
       </intent-filter>
