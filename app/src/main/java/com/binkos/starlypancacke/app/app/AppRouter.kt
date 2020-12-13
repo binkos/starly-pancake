@@ -18,4 +18,8 @@ class AppRouter : Router() {
     fun toMainFlow(name: String? = null) {
         newRootScreen(MainFlowScreen(name))
     }
+
+    fun closeApp() {
+        executeCommands(CloseApplication())
+    }
 }

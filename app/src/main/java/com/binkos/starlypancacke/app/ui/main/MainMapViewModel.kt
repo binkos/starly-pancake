@@ -24,7 +24,7 @@ class MainMapViewModel(
     val orgLiveData: LiveData<List<Organization>> = organizationsLiveData
 
     fun close() {
-        appRouter.exit()
+        appRouter.closeApp()
     }
 
     fun launchMapFragment() {

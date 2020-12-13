@@ -64,7 +64,7 @@ class AppViewModel(
     }
 
     fun finish() {
-        appRouter.exit()
+        appRouter.closeApp()
     }
 
     private fun toAdmin() {
