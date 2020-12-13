@@ -1,7 +1,7 @@
 package com.binkos.starlypancacke.app.ui.main.places
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.binkos.starlypancacke.app.R
@@ -52,7 +52,7 @@ class OrganizationFragment : BaseFragment() {
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     currentPhotoIndexTextView.text =
-                        getString(R.string.indexes_photo_format, position+1, o.photos.size)
+                        getString(R.string.indexes_photo_format, position + 1, o.photos.size)
                     super.onPageSelected(position)
                 }
             })
@@ -74,11 +74,22 @@ class OrganizationFragment : BaseFragment() {
             .menu
             .getItem(0)
             .setOnMenuItemClickListener {
-                Toast.makeText(requireContext(), "Sharing", Toast.LENGTH_LONG).show()
+                shareOrganization(o.name)
                 true
             }
 
         descriptionTextView.text = o.description
+    }
+
+    private fun shareOrganization(key: String) {
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, "https://starly-pancake/organization?name=$key")
+            type = "text/plain"
+        }
+
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        startActivity(shareIntent)
     }
 
     companion object {
