@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+  <com.google.android.material.appbar.MaterialToolbar
+      android:id="@+id/toolbar_organization"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      app:menu="@menu/menu_organization"
+      app:navigationIcon="@drawable/ic_back_black">
+
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/quantum_black_100"
+        android:textSize="@dimen/size_18"
+        tools:text="Title" />
+
+  </com.google.android.material.appbar.MaterialToolbar>
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+      <androidx.viewpager2.widget.ViewPager2
+          android:id="@+id/galleryViewPager"
+          android:layout_width="0dp"
+          android:layout_height="240dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+          android:id="@+id/currentPhotoIndexTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/margin_16"
+          android:layout_marginEnd="@dimen/margin_16"
+          android:background="@drawable/background_current_index"
+          android:padding="@dimen/padding_4"
+          android:textColor="@color/gmm_white"
+          app:layout_constraintEnd_toEndOf="@id/galleryViewPager"
+          app:layout_constraintTop_toTopOf="@id/galleryViewPager"
+          tools:text="1 из 3" />
+
+      <TextView
+          android:id="@+id/descriptionTextView"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/margin_24"
+          android:layout_marginTop="@dimen/margin_8"
+          android:layout_marginEnd="@dimen/margin_24"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/galleryViewPager"
+
+          tools:text="@string/confirm_password" />
+
+      <TextView
+          android:id="@+id/titleMenuTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:fontFamily="@font/firago_bold"
+          android:text="@string/menu"
+          android:textSize="@dimen/size_24"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
+          tools:text="Menu" />
+
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/menuRecyclerView"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/titleMenuTextView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </ScrollView>
+</LinearLayout>

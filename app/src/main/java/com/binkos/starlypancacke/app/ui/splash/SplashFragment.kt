@@ -3,9 +3,10 @@ package com.binkos.starlypancacke.app.ui.splash
 import android.widget.Toast
 import com.binkos.starlypancacke.app.R
 import com.binkos.starlypancacke.app.ui.base.BaseFragment
+import com.binkos.starlypancacke.app.ui.base.FlowFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SplashFragment : BaseFragment() {
+class SplashFragment : FlowFragment() {
 
     private val splashViewModel: SplashViewModel by viewModel()
 
@@ -16,7 +17,7 @@ class SplashFragment : BaseFragment() {
             .observe(viewLifecycleOwner) {
                 when (it) {
                     true -> {
-                        Toast.makeText(requireContext(), "Hello", Toast.LENGTH_LONG).show()
+                        splashViewModel.toMainFlow()
                     }
                     false -> {
                         splashViewModel.toLogin()

@@ -1,7 +1,9 @@
 package com.binkos.starlypancacke.app.di
 
 import com.binkos.starlypancacke.data.repository.AuthRepositoryImpl
+import com.binkos.starlypancacke.data.repository.OrganizationRepositoryImpl
 import com.binkos.starlypancacke.data.repository.SignUpRepositoryImpl
+import com.binkos.starlypancacke.domain.repository.OrganizationsRepository
 import com.binkos.starlypancacke.domain.repository.SignInRepository
 import com.binkos.starlypancacke.domain.repository.SignUpRepository
 import org.koin.dsl.module
@@ -17,6 +19,13 @@ val repositoryModule = module {
 
     factory<SignUpRepository> {
         SignUpRepositoryImpl(
+            remoteSource = get(),
+            contextProvider = get()
+        )
+    }
+
+    factory<OrganizationsRepository> {
+        OrganizationRepositoryImpl(
             remoteSource = get(),
             contextProvider = get()
         )

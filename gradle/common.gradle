@@ -25,6 +25,7 @@ ext {
     gsonVersion = '2.8.6'
     roomVersion = '2.2.5'
     ciceroneVersion = '6.4'
+    gsonVersion = '2.8.6'
 }
 
 ext {
@@ -59,6 +60,7 @@ ext {
     roomRuntime = "androidx.room:room-runtime:$roomVersion"
     room = "androidx.room:room-ktx:$roomVersion"
 
+    gson = "com.google.code.gson:gson:$gsonVersion"
 
     cicerone = "com.github.terrakok:cicerone:$ciceroneVersion"
 }
