@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-  <ImageView
-      android:layout_width="50dp"
-      android:layout_height="50dp"
-      android:layout_marginStart="@dimen/margin_44"
-      android:layout_marginTop="@dimen/margin_44" />
-
   <androidx.fragment.app.FragmentContainerView
       android:id="@+id/map"
       android:name="com.google.android.libraries.maps.SupportMapFragment"
       android:layout_width="match_parent"
       android:layout_height="match_parent" />
+
+  <ImageView
+      android:id="@+id/sideMenuOpenerImageView"
+      android:layout_width="@dimen/size_24"
+      android:layout_height="@dimen/size_24"
+      android:layout_marginStart="@dimen/margin_24"
+      android:layout_marginTop="@dimen/margin_24" />
 </FrameLayout>

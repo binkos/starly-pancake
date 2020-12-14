@@ -1,6 +1,7 @@
 package com.binkos.starlypancacke.app.ui.main
 
 import android.os.Bundle
+import androidx.core.view.GravityCompat
 import com.binkos.starlypancacke.app.R
 import com.binkos.starlypancacke.app.common.extensions.setLaunchScreen
 import com.binkos.starlypancacke.app.common.extensions.tryToGetStringOrNull
@@ -8,6 +9,7 @@ import com.binkos.starlypancacke.app.di.MAIN_FLOW_FEATURE
 import com.binkos.starlypancacke.app.di.mainModule
 import com.binkos.starlypancacke.app.ui.base.FlowFragment
 import com.github.terrakok.cicerone.NavigatorHolder
+import kotlinx.android.synthetic.main.fragment_main_flow.*
 import org.koin.android.ext.android.inject
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
@@ -31,7 +33,7 @@ class MainFlowFragment : FlowFragment() {
     }
 
     override fun viewReady() {
-
+        mainSideNavigationView.menu.getItem(0).isChecked = true
     }
 
     override fun onResume() {
@@ -50,6 +52,14 @@ class MainFlowFragment : FlowFragment() {
         super.onDestroyView()
 
         unloadKoinModules(mainModule)
+    }
+
+    fun onClick() {
+        if (mainFlowDrawer.isDrawerOpen(GravityCompat.START)) {
+            mainFlowDrawer.closeDrawer(GravityCompat.START)
+        } else {
+            mainFlowDrawer.openDrawer(GravityCompat.START)
+        }
     }
 
     companion object {
