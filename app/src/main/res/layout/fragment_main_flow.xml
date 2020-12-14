@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/mainFlowDrawer"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
   <androidx.fragment.app.FragmentContainerView
       android:id="@+id/fragmentContainer"
@@ -10,7 +12,9 @@
       android:layout_height="match_parent" />
 
   <com.binkos.starlypancacke.app.ui.view.widget.SideNavigationView
+      android:id="@+id/mainSideNavigationView"
       android:layout_width="wrap_content"
       android:layout_height="match_parent"
+      app:menu="@menu/menu_side_navigation"
       android:layout_gravity="start" />
 </androidx.drawerlayout.widget.DrawerLayout>

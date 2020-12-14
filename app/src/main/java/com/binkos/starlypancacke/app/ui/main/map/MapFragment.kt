@@ -2,13 +2,16 @@ package com.binkos.starlypancacke.app.ui.main.map
 
 import android.os.Bundle
 import com.binkos.starlypancacke.app.R
-import com.binkos.starlypancacke.app.common.extensions.tryToGetString
+import com.binkos.starlypancacke.app.common.extensions.onClick
 import com.binkos.starlypancacke.app.common.extensions.tryToGetStringOrNull
 import com.binkos.starlypancacke.app.ui.base.BaseFragment
+import com.binkos.starlypancacke.app.ui.main.MainFlowFragment
 import com.binkos.starlypancacke.app.ui.main.MainMapViewModel
+import com.bumptech.glide.Glide
 import com.google.android.libraries.maps.GoogleMap
 import com.google.android.libraries.maps.OnMapReadyCallback
 import com.google.android.libraries.maps.SupportMapFragment
+import kotlinx.android.synthetic.main.fragment_map.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MapFragment : BaseFragment(), OnMapReadyCallback {
@@ -30,6 +33,14 @@ class MapFragment : BaseFragment(), OnMapReadyCallback {
             vm.launchMapFragment()
         } else {
             vm.launchOrgSearch(orgName)
+        }
+        Glide
+            .with(requireContext())
+            .load(R.drawable.ic_menu_black)
+            .circleCrop()
+            .into(sideMenuOpenerImageView)
+        sideMenuOpenerImageView.onClick {
+            (parentFragment as MainFlowFragment).onClick()
         }
     }
 
