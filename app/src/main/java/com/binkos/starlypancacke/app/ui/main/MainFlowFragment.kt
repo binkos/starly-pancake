@@ -11,6 +11,8 @@ import com.binkos.starlypancacke.app.ui.base.FlowFragment
 import com.github.terrakok.cicerone.NavigatorHolder
 import kotlinx.android.synthetic.main.fragment_main_flow.*
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.getViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
 import org.koin.core.qualifier.named
@@ -18,6 +20,7 @@ import org.koin.core.qualifier.named
 class MainFlowFragment : FlowFragment() {
 
     private val navigatorHolder: NavigatorHolder by inject(named(MAIN_FLOW_FEATURE))
+    private val vm: MainMapViewModel by viewModel()
 
     override fun getLayout(): Int {
         return R.layout.fragment_main_flow
@@ -34,6 +37,10 @@ class MainFlowFragment : FlowFragment() {
 
     override fun viewReady() {
         mainSideNavigationView.menu.getItem(0).isChecked = true
+        mainSideNavigationView.menu.getItem(1).setOnMenuItemClickListener {
+            vm.logout()
+            true
+        }
     }
 
     override fun onResume() {

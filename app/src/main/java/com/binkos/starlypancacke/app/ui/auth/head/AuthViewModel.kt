@@ -16,7 +16,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class AuthViewModel(
@@ -45,7 +44,7 @@ class AuthViewModel(
                     when (it) {
                         is OnSuccess -> {
                             authUseCase.save(email)
-                            userAuthLiveData.value = it
+                            toMainFlow()
                         }
                         is OnFailure -> {
                             userAuthLiveData.value = it
@@ -90,10 +89,6 @@ class AuthViewModel(
 
     fun toMainFlow() {
         appRouter.toMainFlow()
-    }
-
-    fun back() {
-        featureRouter.backTo(SignInFragmentScreen())
     }
 
     fun finish() {

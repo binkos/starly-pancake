@@ -1,9 +1,6 @@
 package com.binkos.starlypancacke.app.di
 
-import com.binkos.starlypancacke.domain.usecase.GetAuthorizeUseCase
-import com.binkos.starlypancacke.domain.usecase.GetOrganizationsUseCase
-import com.binkos.starlypancacke.domain.usecase.SignInUseCase
-import com.binkos.starlypancacke.domain.usecase.SignUpUseCase
+import com.binkos.starlypancacke.domain.usecase.*
 import org.koin.dsl.module
 
 val interactionModule = module {
@@ -11,4 +8,5 @@ val interactionModule = module {
     factory { GetAuthorizeUseCase(signInRepository = get()) }
     factory { SignUpUseCase(signUpRepository = get()) }
     factory { GetOrganizationsUseCase(organizationsRepository = get()) }
+    factory { LogoutUseCase(signInRepository = get()) }
 }

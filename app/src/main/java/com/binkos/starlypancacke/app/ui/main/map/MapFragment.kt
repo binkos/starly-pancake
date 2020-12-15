@@ -12,13 +12,14 @@ import com.google.android.libraries.maps.GoogleMap
 import com.google.android.libraries.maps.OnMapReadyCallback
 import com.google.android.libraries.maps.SupportMapFragment
 import kotlinx.android.synthetic.main.fragment_map.*
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MapFragment : BaseFragment(), OnMapReadyCallback {
 
     lateinit var map: GoogleMap
     private val mapDrawer: MapDrawer = MapDrawer()
-    private val vm: MainMapViewModel by viewModel()
+    private val vm: MainMapViewModel by sharedViewModel()
 
     override fun getLayout(): Int {
         return R.layout.fragment_map
