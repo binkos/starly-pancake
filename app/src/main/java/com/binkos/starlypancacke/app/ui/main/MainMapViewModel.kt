@@ -8,8 +8,8 @@ import com.binkos.starlypancacke.app.app.AppRouter
 import com.binkos.starlypancacke.app.common.extensions.launch
 import com.binkos.starlypancacke.domain.model.Organization
 import com.binkos.starlypancacke.domain.usecase.GetOrganizationsUseCase
+import com.binkos.starlypancacke.domain.usecase.LogoutUseCase
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
@@ -17,7 +17,8 @@ import kotlinx.coroutines.flow.flowOn
 class MainMapViewModel(
     private val appRouter: AppRouter,
     private val featureRouter: MainFlowRouter,
-    private val getOrganizationsUseCase: GetOrganizationsUseCase
+    private val getOrganizationsUseCase: GetOrganizationsUseCase,
+    private val logoutUseCase: LogoutUseCase
 ) : ViewModel() {
 
     private val organizationsLiveData: MutableLiveData<List<Organization>> = MutableLiveData()
@@ -28,7 +29,7 @@ class MainMapViewModel(
     }
 
     fun launchMapFragment() {
-        launch(Job() + Dispatchers.Main) {
+        launch() {
             getOrganizationsUseCase
                 .execute()
                 .flowOn(Dispatchers.IO)
@@ -42,7 +43,7 @@ class MainMapViewModel(
     }
 
     fun launchOrgSearch(name: String) {
-        launch(Job() + Dispatchers.Main) {
+        launch {
             getOrganizationsUseCase
                 .find(name)
                 .flowOn(Dispatchers.IO)
@@ -61,5 +62,12 @@ class MainMapViewModel(
 
     fun backToMap() {
         featureRouter.backTo(MapFragmentScreen())
+    }
+
+    fun logout() {
+        launch {
+            logoutUseCase.logout()
+            appRouter.toAuthFlow()
+        }
     }
 }

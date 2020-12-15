@@ -28,7 +28,7 @@ class SignUpFragment : BaseFragment() {
                         is OnSuccess -> {
                             Toast.makeText(requireContext(), "User registered", Toast.LENGTH_SHORT)
                                 .show()
-                            vm.back()
+                            vm.finish()
                         }
                         is OnFailure -> {
                             Toast.makeText(requireContext(), it.reason.error, Toast.LENGTH_SHORT)
@@ -44,7 +44,7 @@ class SignUpFragment : BaseFragment() {
     }
 
     override fun onBackPressed() {
-        vm.back()
+        vm.finish()
     }
 
 

@@ -12,11 +12,11 @@ class AppRouter : Router() {
     }
 
     fun toAuthFlow() {
-        newRootScreen(AuthFlowFragmentScreen())
+        replaceScreen(AuthFlowFragmentScreen())
     }
 
     fun toMainFlow(name: String? = null) {
-        newRootScreen(MainFlowScreen(name))
+        replaceScreen(MainFlowScreen(name))
     }
 
     fun closeApp() {

@@ -17,7 +17,8 @@ val mainModule = module {
         MainMapViewModel(
             featureRouter = get(),
             appRouter = get(),
-            getOrganizationsUseCase = get()
+            getOrganizationsUseCase = get(),
+            logoutUseCase = get()
         )
     }
 }

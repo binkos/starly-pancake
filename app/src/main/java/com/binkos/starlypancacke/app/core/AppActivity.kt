@@ -47,9 +47,9 @@ class AppActivity : AppCompatActivity() {
     }
 
     override fun onPause() {
-        super.onPause()
-
         featureNavigatorHolder.removeNavigator()
+
+        super.onPause()
     }
 
     override fun onNewIntent(intent: Intent?) {
