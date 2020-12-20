@@ -57,4 +57,9 @@ class AuthRepositoryImpl(
     override suspend fun saveAdmin(email: String) {
         preferences.edit().putString(ADMIN_EMAIL, email).apply()
     }
+
+    override suspend fun getCurrentUserId(): String? {
+        return preferences.getString(ADMIN_EMAIL, null)
+    }
+
 }

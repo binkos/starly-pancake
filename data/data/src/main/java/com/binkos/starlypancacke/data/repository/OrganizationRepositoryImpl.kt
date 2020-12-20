@@ -44,7 +44,8 @@ class OrganizationRepositoryImpl(
                 category = FoodCategory.SOUP,
                 ingredients = listOf("Mushrooms", "Cream", "Potato", "Spices")
             )
-        )
+        ),
+        ownersId = "qweqweqweqwe"
     )
 
     override suspend fun get(): List<Organization> {
@@ -57,7 +58,8 @@ class OrganizationRepositoryImpl(
                 description = "",
                 latitude = 53.909581,
                 longitude = 27.4293,
-                menu = listOf()
+                menu = listOf(),
+                ownersId = "qvdsawe"
             ),
             Organization(
                 name = "3",
@@ -66,8 +68,8 @@ class OrganizationRepositoryImpl(
                 description = "",
                 latitude = 53.909571,
                 longitude = 27.42733,
-                menu = listOf()
-
+                menu = listOf(),
+                ownersId = "qweqweqczx"
             ),
             Organization(
                 name = "4",
@@ -76,7 +78,8 @@ class OrganizationRepositoryImpl(
                 description = "",
                 latitude = 53.909561,
                 longitude = 27.4243,
-                menu = listOf()
+                menu = listOf(),
+                ownersId = "qwe32e"
             ),
             Organization(
                 name = "5",
@@ -85,7 +88,8 @@ class OrganizationRepositoryImpl(
                 description = "",
                 latitude = 53.909551,
                 longitude = 27.425,
-                menu = listOf()
+                menu = listOf(),
+                ownersId = "qwe32e"
             )
         )
 //        return remoteSource
@@ -107,7 +111,8 @@ class OrganizationRepositoryImpl(
                 description = "«Мама Стифлера» — знаковое для поколения двухтысячных выражение. Те, кто смотрел «Американский пирог», наверняка помнят знойную Дженнифер Кулидж в этой роли. Считается, что именно благодаря «маме Стифлера» в обиходе появилось слово «милфа» (MILF), означающее опытную взрослую женщину, которая не растеряла своей привлекательности и по-прежнему представляет интерес для мужчин (зачастую — моложе себя). Кстати, один из самых популярных поисковых запросов на порносайтах.",
                 latitude = 53.909581,
                 longitude = 27.4293,
-                menu = listOf()
+                menu = listOf(),
+                ownersId = "qwasd"
             )
         )
 
@@ -117,6 +122,6 @@ class OrganizationRepositoryImpl(
     }
 
     override suspend fun add(organization: Organization) {
-        TODO("Not yet implemented")
+        print(organization.toString())
     }
 }

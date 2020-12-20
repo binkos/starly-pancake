@@ -18,4 +18,11 @@
   <string name="logout">Выйти</string>
   <string name="ok">Ok</string>
   <string name="your_organizations">Ваши заведения</string>
+  <string name="name_organization">Название</string>
+  <string name="latitude">Широта</string>
+  <string name="longitude">Долгота</string>
+  <string name="description">Описание</string>
+  <string name="main_link_photo_organization">Ссылка на главную фотографию заведения</string>
+  <string name="create">Создать</string>
+  <string name="link_photos">Ссылки на фотографии</string>
 </resources>

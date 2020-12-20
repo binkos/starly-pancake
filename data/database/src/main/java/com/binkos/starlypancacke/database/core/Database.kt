@@ -9,7 +9,7 @@ import com.binkos.starlypancacke.database.entity.OrganizationDb
 import com.binkos.starlypancacke.database.entity.UserDb
 import androidx.room.Database as Db
 
-@Db(entities = [UserDb::class, OrganizationDb::class], version = 3, exportSchema = false)
+@Db(entities = [UserDb::class, OrganizationDb::class], version = 4, exportSchema = false)
 @TypeConverters(DatabaseConverters::class)
 abstract class Database : RoomDatabase() {
 

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlinx-serialization'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -35,4 +36,7 @@ dependencies {
     implementation koinAndroid
     implementation koinViewModel
     implementation koinScope
+
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.1"
+
 }

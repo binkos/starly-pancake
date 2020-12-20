@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.binkos.starlypancacke.app.R
+import com.binkos.starlypancacke.app.common.extensions.onClick
 import com.binkos.starlypancacke.app.common.extensions.tryToGetString
 import com.binkos.starlypancacke.app.core.SystemDialogFragment
 import com.binkos.starlypancacke.app.ui.base.BaseFragment
@@ -55,6 +56,10 @@ class AdminOrganizationsFragment : BaseFragment() {
                 vm.logout()
                 true
             }
+
+        adminOrganizationFloatingActionButton.setOnClickListener {
+            vm.toCreateOrganization()
+        }
     }
 
     private fun initObservers() {
@@ -63,7 +68,6 @@ class AdminOrganizationsFragment : BaseFragment() {
             .observe(viewLifecycleOwner) {
                 when (it) {
                     is Success -> {
-                        Toast.makeText(requireContext(), "SUCCESS", Toast.LENGTH_LONG).show()
                         adapter.updateList(it.data)
                     }
                     is Failure -> {

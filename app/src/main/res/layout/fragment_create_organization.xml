@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+  <com.google.android.material.appbar.MaterialToolbar
+      android:id="@+id/createOrganizationToolbar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:navigationIcon="@drawable/ic_back_black">
+
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/quantum_black_100"
+        android:textSize="@dimen/size_18"
+        tools:text="Создание заведения" />
+
+  </com.google.android.material.appbar.MaterialToolbar>
+
+  <ScrollView
+      android:id="@+id/createOrganizationScrollView"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/createOrganizationToolbar">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/createOrganizationNameInputLayout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/margin_20"
+          android:layout_marginTop="@dimen/margin_20"
+          android:layout_marginEnd="@dimen/margin_20"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createOrganizationNameInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/name_organization"
+            android:imeOptions="actionNext"
+            android:inputType="text" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/createOrganizationDescriptionInputLayout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/margin_20"
+          android:layout_marginTop="@dimen/margin_20"
+          android:layout_marginEnd="@dimen/margin_20"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/createOrganizationNameInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createOrganizationNDescriptionInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/description"
+            android:imeOptions="actionNext"
+            android:inputType="text" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/createOrganizationLatitudeInputLayout"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/margin_20"
+          android:layout_marginTop="@dimen/margin_20"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintEnd_toStartOf="@id/createOrganizationLongitudeInputLayout"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/createOrganizationDescriptionInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createOrganizationLatitudeInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/latitude"
+            android:imeOptions="actionNext"
+            android:inputType="text" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/createOrganizationLongitudeInputLayout"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/margin_20"
+          android:layout_marginTop="@dimen/margin_20"
+          android:layout_marginEnd="@dimen/margin_20"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/createOrganizationLatitudeInputLayout"
+          app:layout_constraintTop_toBottomOf="@id/createOrganizationDescriptionInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createOrganizationLongitudeInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/longitude"
+            android:imeOptions="actionNext"
+            android:inputType="text" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/createOrganizationPhotoIconInputLayout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/margin_20"
+          android:layout_marginTop="@dimen/margin_20"
+          android:layout_marginEnd="@dimen/margin_20"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/createOrganizationLatitudeInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createOrganizationPhotoIconInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/main_link_photo_organization"
+            android:imeOptions="actionNext"
+            android:inputType="text" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/createOrganizationLinksInputLayout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/margin_20"
+          android:layout_marginTop="@dimen/margin_20"
+          android:layout_marginEnd="@dimen/margin_20"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/createOrganizationPhotoIconInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createOrganizationLinksInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/link_photos"
+            android:inputType="text" />
+      </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </ScrollView>
+
+  <com.google.android.material.button.MaterialButton
+      android:id="@+id/createOrganizationButton"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/height_44"
+      android:layout_margin="@dimen/margin_4"
+      android:text="@string/create" />
+</LinearLayout>

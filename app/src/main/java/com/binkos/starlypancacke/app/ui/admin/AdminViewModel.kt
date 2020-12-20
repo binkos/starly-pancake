@@ -6,9 +6,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.binkos.starlypancacke.app.app.AppRouter
+import com.binkos.starlypancacke.app.ui.organization.CreateOrganizationFragment
+import com.binkos.starlypancacke.app.ui.organization.CreateOrganizationFragmentScreen
 import com.binkos.starlypancacke.domain.model.*
 import com.binkos.starlypancacke.domain.usecase.GetOrganizationsUseCase
 import com.binkos.starlypancacke.domain.usecase.LogoutUseCase
+import com.github.terrakok.cicerone.androidx.FragmentScreen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -46,6 +49,14 @@ class AdminViewModel(
 
     fun exit() {
         featureRouter.exit()
+    }
+
+    fun toCreateOrganization() {
+        featureRouter.navigateTo(FragmentScreen { CreateOrganizationFragment() })
+    }
+
+    fun toChangeOrganization(organization: Organization) {
+        featureRouter.navigateTo(CreateOrganizationFragmentScreen(organization))
     }
 
     fun logout() {

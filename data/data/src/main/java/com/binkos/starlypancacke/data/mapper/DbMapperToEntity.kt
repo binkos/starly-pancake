@@ -18,7 +18,8 @@ fun OrganizationDb.toDomain() = Organization(
     description = description,
     latitude = latitude,
     longitude = longitude,
-    menu = menu.sortedBy { it.name }.map { it.toDomain() }
+    menu = menu.sortedBy { it.name }.map { it.toDomain() },
+    ownersId = ownersId
 )
 
 fun FoodDb.toDomain() = Food(

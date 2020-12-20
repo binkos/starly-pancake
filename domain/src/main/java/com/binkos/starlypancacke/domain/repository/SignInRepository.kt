@@ -16,4 +16,6 @@ interface SignInRepository {
     suspend fun logout()
 
     suspend fun saveAdmin(email: String)
+
+    suspend fun getCurrentUserId(): String?
 }
