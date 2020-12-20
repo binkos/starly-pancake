@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 
 private const val USER_EMAIL = "USER_EMAIL"
+private const val ADMIN_EMAIL = "USER_EMAIL"
 
 class AuthRepositoryImpl(
     private val preferences: SharedPreferences,
@@ -35,9 +36,15 @@ class AuthRepositoryImpl(
         }
     }
 
-    override suspend fun isAuthorized(): Boolean {
+    override suspend fun isAuthorized(): AuthUserStatus {
         return withContext(contextProvider.io) {
-            return@withContext preferences.getString(USER_EMAIL, null) != null
+            preferences.getString(ADMIN_EMAIL, null)?.let {
+                return@withContext AuthUserStatus.ADMIN.apply { data = it }
+            }
+            if (
+                preferences.getString(USER_EMAIL, null) != null
+            ) return@withContext AuthUserStatus.USER
+            return@withContext AuthUserStatus.NONE
         }
     }
 
@@ -45,5 +52,9 @@ class AuthRepositoryImpl(
         withContext(contextProvider.io) {
             preferences.edit().clear().apply()
         }
+    }
+
+    override suspend fun saveAdmin(email: String) {
+        preferences.edit().putString(ADMIN_EMAIL, email).apply()
     }
 }
