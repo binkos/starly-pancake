@@ -11,7 +11,6 @@ import com.binkos.starlypancacke.app.ui.base.FlowFragment
 import com.github.terrakok.cicerone.NavigatorHolder
 import kotlinx.android.synthetic.main.fragment_main_flow.*
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules

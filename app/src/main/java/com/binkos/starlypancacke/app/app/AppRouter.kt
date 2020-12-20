@@ -1,5 +1,6 @@
 package com.binkos.starlypancacke.app.app
 
+import com.binkos.starlypancacke.app.ui.admin.AdminFlowScreen
 import com.binkos.starlypancacke.app.ui.auth.head.AuthFlowFragmentScreen
 import com.binkos.starlypancacke.app.ui.main.MainFlowScreen
 import com.binkos.starlypancacke.app.ui.splash.SplashScreen
@@ -21,5 +22,9 @@ class AppRouter : Router() {
 
     fun closeApp() {
         executeCommands(CloseApplication())
+    }
+
+    fun toAdmin(id: String) {
+        newRootChain(AdminFlowScreen(adminId = id))
     }
 }

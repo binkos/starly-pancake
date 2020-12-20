@@ -10,6 +10,7 @@
   <dimen name="margin_26">26dp</dimen>
   <dimen name="margin_32">32dp</dimen>
   <dimen name="margin_44">44dp</dimen>
+  <dimen name="margin_56">56dp</dimen>
 
   <dimen name="padding_4">4dp</dimen>
 

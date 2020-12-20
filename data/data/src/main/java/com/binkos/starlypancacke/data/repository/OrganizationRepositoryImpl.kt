@@ -14,40 +14,42 @@ class OrganizationRepositoryImpl(
     private val contextProvider: CoroutineContextProvider
 ) : OrganizationsRepository {
 
+    val sampleOrganization = Organization(
+        name = "q231r4g",
+        icon = "https://img.the-village.me/the-village.me/post_image-image/0DuIhJI5CCl8e_5OA2CZng-wide.jpg",
+        photos = listOf(
+            "https://img.the-village.me/the-village.me/post_image-image/RXbHzV7M6TAUf5-cd2zUkg-wide.jpg",
+            "https://img.the-village.me/the-village.me/post_image-image/8Ed-XaC4rNjvnGQ5YgMHSg-wide.jpg",
+            "https://img.the-village.me/the-village.me/post_image-image/KNlNQ9sJHCnTU25GBNQGNg-wide.jpg"
+        ),
+        description = "«Мама Стифлера» — знаковое для поколения двухтысячных выражение. Те, кто смотрел «Американский пирог», наверняка помнят знойную Дженнифер Кулидж в этой роли. Считается, что именно благодаря «маме Стифлера» в обиходе появилось слово «милфа» (MILF), означающее опытную взрослую женщину, которая не растеряла своей привлекательности и по-прежнему представляет интерес для мужчин (зачастую — моложе себя). Кстати, один из самых популярных поисковых запросов на порносайтах.",
+        latitude = 53.909581,
+        longitude = 27.4293,
+        menu = listOf(
+            Food(
+                icon = "https://cs9.pikabu.ru/post_img/2018/01/28/8/1517143089171727077.jpg",
+                name = "Carbonara",
+                weight = 250,
+                calories = 700,
+                price = 12,
+                category = FoodCategory.PASTA,
+                ingredients = listOf("Pasta", "Cheese", "Bacon", "Garlic", "Salt", "Cream")
+            ),
+            Food(
+                icon = "https://eda.ru/img/eda/1200x-i/s2.eda.ru/StaticContent/Photos/160115152344/160119155957/p_O.jpg",
+                name = "Mushrooms Soup",
+                weight = 400,
+                calories = 480,
+                price = 8,
+                category = FoodCategory.SOUP,
+                ingredients = listOf("Mushrooms", "Cream", "Potato", "Spices")
+            )
+        )
+    )
+
     override suspend fun get(): List<Organization> {
         return listOf(
-            Organization(
-                name = "q231r4g",
-                icon = "https://img.the-village.me/the-village.me/post_image-image/0DuIhJI5CCl8e_5OA2CZng-wide.jpg",
-                photos = listOf(
-                    "https://img.the-village.me/the-village.me/post_image-image/RXbHzV7M6TAUf5-cd2zUkg-wide.jpg",
-                    "https://img.the-village.me/the-village.me/post_image-image/8Ed-XaC4rNjvnGQ5YgMHSg-wide.jpg",
-                    "https://img.the-village.me/the-village.me/post_image-image/KNlNQ9sJHCnTU25GBNQGNg-wide.jpg"
-                ),
-                description = "«Мама Стифлера» — знаковое для поколения двухтысячных выражение. Те, кто смотрел «Американский пирог», наверняка помнят знойную Дженнифер Кулидж в этой роли. Считается, что именно благодаря «маме Стифлера» в обиходе появилось слово «милфа» (MILF), означающее опытную взрослую женщину, которая не растеряла своей привлекательности и по-прежнему представляет интерес для мужчин (зачастую — моложе себя). Кстати, один из самых популярных поисковых запросов на порносайтах.",
-                latitude = 53.909581,
-                longitude = 27.4293,
-                menu = listOf(
-                    Food(
-                        icon = "https://cs9.pikabu.ru/post_img/2018/01/28/8/1517143089171727077.jpg",
-                        name = "Carbonara",
-                        weight = 250,
-                        calories = 700,
-                        price = 12,
-                        category = FoodCategory.PASTA,
-                        ingredients = listOf("Pasta", "Cheese", "Bacon", "Garlic", "Salt", "Cream")
-                    ),
-                    Food(
-                        icon = "https://eda.ru/img/eda/1200x-i/s2.eda.ru/StaticContent/Photos/160115152344/160119155957/p_O.jpg",
-                        name = "Mushrooms Soup",
-                        weight = 400,
-                        calories = 480,
-                        price = 8,
-                        category = FoodCategory.SOUP,
-                        ingredients = listOf("Mushrooms", "Cream", "Potato", "Spices")
-                    )
-                )
-            ),
+            sampleOrganization,
             Organization(
                 name = "2",
                 icon = "",

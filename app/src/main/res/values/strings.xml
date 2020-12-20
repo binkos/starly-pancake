@@ -16,4 +16,6 @@
   <string name="user_conditions">Пользовательское соглашение</string>
   <string name="created_by_vladislav_provalionok">Created by Vladislav Provalionok</string>
   <string name="logout">Выйти</string>
+  <string name="ok">Ok</string>
+  <string name="your_organizations">Ваши заведения</string>
 </resources>

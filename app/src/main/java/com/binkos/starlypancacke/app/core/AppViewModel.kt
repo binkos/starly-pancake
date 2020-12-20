@@ -11,6 +11,7 @@ import kotlinx.coroutines.withContext
 
 private const val ORGANIZATION_PATH_KEY = "organization"
 private const val NAME_PATH_KEY = "name"
+private const val ID_PATH_KEY = "id"
 private const val ADMIN_PATH_KEY = "admin"
 
 class AppViewModel(
@@ -32,7 +33,10 @@ class AppViewModel(
                         val orgName = intent.data?.getQueryParameter(NAME_PATH_KEY)!!
                         toOrganization(orgName)
                     }
-                    ADMIN_PATH_KEY -> toAdmin()
+                    ADMIN_PATH_KEY -> {
+                        val adminID = intent.data?.getQueryParameter(ID_PATH_KEY)!!
+                        toAdmin(adminID)
+                    }
                     null -> handleNormalFlow(isRestart)
                 }
             }
@@ -67,7 +71,8 @@ class AppViewModel(
         appRouter.closeApp()
     }
 
-    private fun toAdmin() {
+    private fun toAdmin(id: String) {
+        appRouter.toAdmin(id)
 
     }
 
