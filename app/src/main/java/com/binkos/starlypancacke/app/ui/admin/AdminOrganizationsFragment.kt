@@ -23,7 +23,8 @@ class AdminOrganizationsFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter = AdminOrganizationsAdapter(requireActivity()) { id ->
-            SystemDialogFragment.newInstance(id).show(childFragmentManager, null)
+            val linkForQrContent = "app://starly-pancake/admin?id=$id"
+            SystemDialogFragment.newInstance(linkForQrContent).show(childFragmentManager, null)
         }
     }
 

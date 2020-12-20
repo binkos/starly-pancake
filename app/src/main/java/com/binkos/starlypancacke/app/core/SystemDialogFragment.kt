@@ -5,11 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidmads.library.qrgenearator.QRGContents
+import androidmads.library.qrgenearator.QRGEncoder
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import com.binkos.starlypancacke.app.R
+import com.binkos.starlypancacke.app.common.extensions.tryToGetString
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.dialog_fragment_system.*
+
 
 class SystemDialogFragment : DialogFragment() {
 
@@ -26,18 +30,28 @@ class SystemDialogFragment : DialogFragment() {
 
         systemFragmentDialogButtonPositive.setOnClickListener { dismiss() }
         systemFragmentDialogButtonClose.setOnClickListener { dismiss() }
-        
+
         Glide
             .with(this)
-            .load("qrCodeImageView")
+            .load(
+                QRGEncoder(
+                    tryToGetString(key = ORGANIZATION_ID_KEY),
+                    null,
+                    QRGContents.Type.TEXT,
+                    400
+                ).encodeAsBitmap()
+            )
             .into(qrCodeImageView)
     }
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
-        super.onCreateDialog(savedInstanceState).apply {
-//            window?.decorView?.setBackgroundResource(R.color.transparent)
-        }
+    override fun onResume() {
+        super.onResume()
 
+        dialog?.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+    }
 
     companion object {
         private const val ORGANIZATION_ID_KEY = "ORGANIZATION_ID_KEY"
