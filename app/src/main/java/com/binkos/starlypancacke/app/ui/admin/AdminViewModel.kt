@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.binkos.starlypancacke.app.app.AppRouter
+import com.binkos.starlypancacke.app.ui.main.OrganizationFragmentScreen
 import com.binkos.starlypancacke.app.ui.organization.CreateOrganizationFragment
 import com.binkos.starlypancacke.app.ui.organization.CreateOrganizationFragmentScreen
 import com.binkos.starlypancacke.domain.model.*
@@ -35,7 +36,7 @@ class AdminViewModel(
         viewModelScope.launch(Dispatchers.Main) {
             organizationsLiveData.postValue(Progress())
             getOrganizationsUseCase
-                .execute()
+                .getOrganizationByOwner(adminId)
                 .flowOn(Dispatchers.IO)
                 .catch {
                     Log.e(this@AdminViewModel::class.java.toString(), it.toString())
@@ -49,6 +50,10 @@ class AdminViewModel(
 
     fun exit() {
         featureRouter.exit()
+    }
+
+    fun toOrganization(name: String) {
+        featureRouter.navigateTo(OrganizationFragmentScreen(name, true))
     }
 
     fun toCreateOrganization() {

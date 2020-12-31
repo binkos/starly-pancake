@@ -1,6 +1,7 @@
 package com.binkos.starlypancacke.app.core
 
 import android.content.Intent
+import android.util.Base64
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.binkos.starlypancacke.app.app.AppRouter
@@ -10,6 +11,7 @@ import com.binkos.starlypancacke.domain.usecase.SignInUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.nio.charset.StandardCharsets
 
 private const val ORGANIZATION_PATH_KEY = "organization"
 private const val NAME_PATH_KEY = "name"
@@ -38,8 +40,10 @@ class AppViewModel(
                     }
                     ADMIN_PATH_KEY -> {
                         val adminEmail = intent.data?.getQueryParameter(EMAIL_PATH_KEY)!!
-                        signInUseCase.saveAdmin(adminEmail)
-                        toAdmin(ADMIN_PATH_KEY)
+                        val data: ByteArray = Base64.decode(adminEmail, Base64.DEFAULT)
+                        val decodedText = String(data, StandardCharsets.UTF_8)
+                        signInUseCase.saveAdmin(decodedText)
+                        toAdmin(decodedText)
                     }
                     null -> handleNormalFlow(isRestart)
                 }
@@ -65,10 +69,6 @@ class AppViewModel(
         if (isAppRunning) {
             handleIntent(intent, true)
         }
-    }
-
-    private fun launch() {
-        appRouter.launch()
     }
 
     fun finish() {

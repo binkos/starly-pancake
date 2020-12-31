@@ -10,5 +10,5 @@ class MapFragmentScreen(name: String? = null) :
 class MainFlowScreen(name: String? = null) :
     FragmentScreen(fragmentCreator = { MainFlowFragment.getInstance(name) })
 
-class OrganizationFragmentScreen(private val name: String) :
-    FragmentScreen(fragmentCreator = { OrganizationFragment.newInstance(name) })
+class OrganizationFragmentScreen(name: String, isAdmin: Boolean = false) :
+    FragmentScreen(fragmentCreator = { OrganizationFragment.newInstance(name, isAdmin) })

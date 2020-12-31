@@ -16,12 +16,15 @@ class GetOrganizationsUseCase(
     suspend fun find(name: String): Flow<List<Organization>> {
         return flowOf(
             organizationsRepository
-            .get()
-            .filter { it.name == name }
+                .get()
+                .filter { it.name == name }
         )
     }
 
-    suspend fun getOrganization(name: String): Flow<Organization> {
-        return organizationsRepository.getByName(name)
+    suspend fun getOrganizationByOwner(id: String): Flow<List<Organization>> {
+        return flowOf(
+            organizationsRepository
+                .get()
+                .filter { it.ownersId == id })
     }
 }

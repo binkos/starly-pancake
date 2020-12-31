@@ -40,6 +40,14 @@ class MainFlowFragment : FlowFragment() {
             vm.logout()
             true
         }
+        mainSideNavigationView.menu.getItem(4).setOnMenuItemClickListener {
+            vm.toTermsConditions()
+            true
+        }
+        mainSideNavigationView.menu.getItem(3).setOnMenuItemClickListener {
+            vm.toPrivacyPolicy()
+            true
+        }
     }
 
     override fun onResume() {

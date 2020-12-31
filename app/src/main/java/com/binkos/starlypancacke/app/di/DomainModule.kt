@@ -11,4 +11,5 @@ val interactionModule = module {
     factory { LogoutUseCase(signInRepository = get()) }
     factory { GetAdminUseCase(signInRepository = get()) }
     factory { CreateOrganizationsUseCase(organizationsRepository = get()) }
+    factory { CreateFoodUseCase(organizationsRepository = get()) }
 }

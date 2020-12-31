@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+  <com.google.android.material.appbar.MaterialToolbar
+      android:id="@+id/createFoodToolbar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:navigationIcon="@drawable/ic_back_black">
+
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/quantum_black_100"
+        android:textSize="@dimen/size_18"
+        android:text="Новое блюдо" />
+
+  </com.google.android.material.appbar.MaterialToolbar>
+
+  <ScrollView
+      android:id="@+id/createFoodScrollView"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/createFoodToolbar">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/createFoodNameInputLayout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/margin_20"
+          android:layout_marginTop="@dimen/margin_20"
+          android:layout_marginEnd="@dimen/margin_20"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createFoodNameInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/name_organization"
+            android:imeOptions="actionNext"
+            android:inputType="text" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/createFoodDescriptionInputLayout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/margin_20"
+          android:layout_marginTop="@dimen/margin_20"
+          android:layout_marginEnd="@dimen/margin_20"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/createFoodNameInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createFoodNDescription"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Ингредиенты"
+            android:imeOptions="actionNext"
+            android:inputType="text" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/createFoodLatitudeInputLayout"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/margin_20"
+          android:layout_marginTop="@dimen/margin_20"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintEnd_toStartOf="@id/createFoodLongitudeInputLayout"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/createFoodDescriptionInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createFoodPriceInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Цена"
+            android:imeOptions="actionNext"
+            android:inputType="text" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/createFoodLongitudeInputLayout"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/margin_20"
+          android:layout_marginTop="@dimen/margin_20"
+          android:layout_marginEnd="@dimen/margin_20"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/createFoodLatitudeInputLayout"
+          app:layout_constraintTop_toBottomOf="@id/createFoodDescriptionInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createFoodCaloriesInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Калории"
+            android:imeOptions="actionNext"
+            android:inputType="text" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/createFoodPhotoIconInputLayout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/margin_20"
+          android:layout_marginTop="@dimen/margin_20"
+          android:layout_marginEnd="@dimen/margin_20"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/createFoodLatitudeInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createFoodPhotoIconInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Ссылка на главное фото"
+            android:imeOptions="actionNext"
+            android:inputType="text" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </ScrollView>
+
+  <com.google.android.material.button.MaterialButton
+      android:id="@+id/createFoodButton"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/height_44"
+      android:layout_margin="@dimen/margin_4"
+      android:text="@string/create" />
+</LinearLayout>

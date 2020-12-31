@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.core.os.bundleOf
 import com.binkos.starlypancacke.app.R
 import com.binkos.starlypancacke.app.common.extensions.onClick
-import com.binkos.starlypancacke.app.di.organizationModule
+import com.binkos.starlypancacke.app.di.createOrganizationModule
 import com.binkos.starlypancacke.app.ui.base.BaseFragment
 import com.binkos.starlypancacke.domain.model.Organization
 import kotlinx.android.synthetic.main.fragment_create_organization.*
@@ -19,7 +19,7 @@ class CreateOrganizationFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        loadKoinModules(organizationModule)
+        loadKoinModules(createOrganizationModule)
     }
 
     override fun viewReady() {
@@ -48,7 +48,7 @@ class CreateOrganizationFragment : BaseFragment() {
     override fun onDestroy() {
         super.onDestroy()
 
-        unloadKoinModules(organizationModule)
+        unloadKoinModules(createOrganizationModule)
     }
 
     companion object {

@@ -1,11 +1,11 @@
 package com.binkos.starlypancacke.app.ui.admin
 
 import android.os.Bundle
+import android.util.Base64
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.binkos.starlypancacke.app.R
-import com.binkos.starlypancacke.app.common.extensions.onClick
 import com.binkos.starlypancacke.app.common.extensions.tryToGetString
 import com.binkos.starlypancacke.app.core.SystemDialogFragment
 import com.binkos.starlypancacke.app.ui.base.BaseFragment
@@ -23,10 +23,15 @@ class AdminOrganizationsFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = AdminOrganizationsAdapter(requireActivity()) { id ->
-            val linkForQrContent = "app://starly-pancake/admin?id=$id"
-            SystemDialogFragment.newInstance(linkForQrContent).show(childFragmentManager, null)
-        }
+        adapter = AdminOrganizationsAdapter(
+            requireActivity(),
+            { id ->
+                val linkForQrContent = "app://starly-pancake/admin?id=${
+                    Base64.encode(id.toByteArray(), Base64.DEFAULT)
+                }"
+                SystemDialogFragment.newInstance(linkForQrContent).show(childFragmentManager, null)
+            },
+            { name -> vm.toOrganization(name) })
     }
 
     override fun viewReady() {

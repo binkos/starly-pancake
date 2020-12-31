@@ -14,7 +14,8 @@ import java.util.*
 
 class AdminOrganizationsAdapter(
     private val fragmentActivity: FragmentActivity,
-    private val longClickListener: (id: String) -> Unit
+    private val longClickListener: (id: String) -> Unit,
+    private val clickListener: (id: String) -> Unit
 ) : RecyclerView.Adapter<AdminOrganizationsAdapter.AdminOrganizationViewHolder>() {
 
     private val organizationsList: LinkedList<Organization> = LinkedList()
@@ -33,6 +34,12 @@ class AdminOrganizationsAdapter(
                     longClickListener.invoke(organizationsList[position].name)
                     true
                 }
+
+            itemView
+                .setOnClickListener {
+                    clickListener.invoke(organizationsList[position].name)
+                }
+
             nameOrganizationTextView.text = organizationsList[position].name
             countPointsMenuOrganizationTextView.text =
                 "menu size is ${organizationsList[position].menu.size}"

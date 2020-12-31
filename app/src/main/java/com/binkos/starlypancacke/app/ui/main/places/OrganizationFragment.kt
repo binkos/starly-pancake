@@ -2,32 +2,57 @@ package com.binkos.starlypancacke.app.ui.main.places
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Base64
+import android.view.View
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.binkos.starlypancacke.app.R
-import com.binkos.starlypancacke.app.common.extensions.gone
-import com.binkos.starlypancacke.app.common.extensions.tryToGetStringOrNull
-import com.binkos.starlypancacke.app.common.extensions.visible
+import com.binkos.starlypancacke.app.common.extensions.*
+import com.binkos.starlypancacke.app.di.organizationModule
+import com.binkos.starlypancacke.app.ui.admin.AdminRouter
 import com.binkos.starlypancacke.app.ui.base.BaseFragment
-import com.binkos.starlypancacke.app.ui.main.MainMapViewModel
+import com.binkos.starlypancacke.app.ui.main.MainFlowRouter
+import com.binkos.starlypancacke.app.ui.menu.FoodFragmentScreen
 import com.binkos.starlypancacke.domain.model.Organization
+import com.github.terrakok.cicerone.Router
 import kotlinx.android.synthetic.main.fragment_organization.*
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.loadKoinModules
+import org.koin.core.context.unloadKoinModules
+import org.koin.java.KoinJavaComponent
 
 class OrganizationFragment : BaseFragment() {
 
-    private val vm: MainMapViewModel by sharedViewModel()
+    private val organizationViewModel: OrganizationViewModel by viewModel()
+    private lateinit var router: Router
+    override fun onCreate(savedInstanceState: Bundle?) {
+        loadKoinModules(organizationModule)
+        router = if (tryToGetBoolean(IS_ADMIN_KEY)) {
+            KoinJavaComponent.get(AdminRouter::class.java)
+        } else {
+            KoinJavaComponent.get(MainFlowRouter::class.java)
+        }
+        super.onCreate(savedInstanceState)
+    }
 
     override fun viewReady() {
         tryToGetStringOrNull(ORGANIZATION_NAME_KEY)?.let {
-            vm.launchOrgSearch(it)
+            organizationViewModel.launchOrgSearch(it)
         }
 
-        vm
+        organizationViewModel
             .orgLiveData
             .observe(viewLifecycleOwner) {
                 initViews(it.first())
             }
+
+        if (tryToGetBoolean(IS_ADMIN_KEY)) {
+            createMenuItemView.visible()
+            createMenuItemView.onClick {
+                router.navigateTo(FoodFragmentScreen())
+            }
+        } else createMenuItemView.visibility = View.INVISIBLE
     }
 
     override fun getLayout(): Int {
@@ -35,7 +60,7 @@ class OrganizationFragment : BaseFragment() {
     }
 
     override fun onBackPressed() {
-        vm.backToMap()
+        router.exit()
     }
 
     private fun initViews(o: Organization) {
@@ -67,7 +92,7 @@ class OrganizationFragment : BaseFragment() {
 
 
         toolbar_organization.setNavigationOnClickListener {
-            vm.backToMap()
+            router.exit()
         }
 
         toolbar_organization
@@ -84,7 +109,14 @@ class OrganizationFragment : BaseFragment() {
     private fun shareOrganization(key: String) {
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_TEXT, "https://starly-pancake/organization?name=$key")
+
+
+            putExtra(
+                Intent.EXTRA_TEXT,
+                "https://starly-pancake/organization?name=${
+                    Base64.encode(key.toByteArray(), Base64.DEFAULT)
+                }"
+            )
             type = "text/plain"
         }
 
@@ -92,14 +124,18 @@ class OrganizationFragment : BaseFragment() {
         startActivity(shareIntent)
     }
 
-    companion object {
-        const val ORGANIZATION_NAME_KEY = "ORGANIZATION_NAME"
+    override fun onDestroy() {
+        unloadKoinModules(organizationModule)
+        super.onDestroy()
+    }
 
-        fun newInstance(name: String): OrganizationFragment {
+    companion object {
+        private const val ORGANIZATION_NAME_KEY = "ORGANIZATION_NAME"
+        private const val IS_ADMIN_KEY = "IS_ADMIN"
+
+        fun newInstance(name: String, isAdmin: Boolean = false): OrganizationFragment {
             return OrganizationFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ORGANIZATION_NAME_KEY, name)
-                }
+                arguments = bundleOf(Pair(ORGANIZATION_NAME_KEY, name), Pair(IS_ADMIN_KEY, isAdmin))
             }
         }
     }
