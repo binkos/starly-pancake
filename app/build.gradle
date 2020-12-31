@@ -6,6 +6,7 @@ apply plugin: 'kotlinx-serialization'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
+    ndkVersion "21.3.6528147"
 
     defaultConfig {
         applicationId "com.binkos.starlypancacke"
