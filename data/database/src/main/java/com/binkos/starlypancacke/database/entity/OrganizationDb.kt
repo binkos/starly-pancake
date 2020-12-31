@@ -1,6 +1,9 @@
 package com.binkos.starlypancacke.database.entity
 
-import androidx.room.*
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import com.binkos.starlypancacke.database.DatabaseConverters
 
 internal class OrganizationDbParams {
@@ -14,6 +17,7 @@ internal class OrganizationDbParams {
         const val LONGITUDE = "longitude"
         const val LATITUDE = "latitude"
         const val MENU = "menu"
+        const val OWNER_ID = "owner_id"
     }
 }
 
@@ -44,5 +48,8 @@ class OrganizationDb(
     val description: String,
 
     @ColumnInfo(name = OrganizationDbParams.MENU)
-    val menu: List<FoodDb>
+    val menu: List<FoodDb>,
+
+    @ColumnInfo(name = OrganizationDbParams.OWNER_ID)
+    val ownersId: String
 )

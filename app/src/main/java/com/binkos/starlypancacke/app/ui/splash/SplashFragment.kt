@@ -1,9 +1,8 @@
 package com.binkos.starlypancacke.app.ui.splash
 
-import android.widget.Toast
 import com.binkos.starlypancacke.app.R
-import com.binkos.starlypancacke.app.ui.base.BaseFragment
 import com.binkos.starlypancacke.app.ui.base.FlowFragment
+import com.binkos.starlypancacke.domain.model.AuthUserStatus
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SplashFragment : FlowFragment() {
@@ -16,10 +15,13 @@ class SplashFragment : FlowFragment() {
             .launch()
             .observe(viewLifecycleOwner) {
                 when (it) {
-                    true -> {
+                    AuthUserStatus.ADMIN -> {
+                        splashViewModel.toAdmin(it.data)
+                    }
+                    AuthUserStatus.USER -> {
                         splashViewModel.toMainFlow()
                     }
-                    false -> {
+                    AuthUserStatus.NONE -> {
                         splashViewModel.toLogin()
                     }
                 }

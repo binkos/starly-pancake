@@ -14,6 +14,12 @@ val appModule = module {
     val cicerone = Cicerone.create(AppRouter())
     single { cicerone.router }
     single(named(APP_MODULE)) { cicerone.getNavigatorHolder() }
-    viewModel { AppViewModel(appRouter = get(),getAuthorizeUseCase = get()) }
+    viewModel {
+        AppViewModel(
+            appRouter = get(),
+            getAuthorizeUseCase = get(),
+            signInUseCase = get()
+        )
+    }
     single { CoroutineContextProvider() }
 }

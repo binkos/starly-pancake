@@ -16,4 +16,8 @@ class SignInUseCase(
     suspend fun save(email: String) {
         signInRepository.save(email)
     }
+
+    suspend fun saveAdmin(email: String) {
+        signInRepository.saveAdmin(email)
+    }
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.binkos.starlypancacke.app.app.AppRouter
+import com.binkos.starlypancacke.domain.model.AuthUserStatus
 import com.binkos.starlypancacke.domain.usecase.GetAuthorizeUseCase
 
 class SplashViewModel(
@@ -11,7 +12,7 @@ class SplashViewModel(
     private val appRouter: AppRouter
 ) : ViewModel() {
 
-    fun launch(): LiveData<Boolean> {
+    fun launch(): LiveData<AuthUserStatus> {
         return liveData {
             emit(getAuthorizeUseCase.isUserAuthorized())
         }
@@ -21,11 +22,15 @@ class SplashViewModel(
         appRouter.toAuthFlow()
     }
 
-    fun finish(){
+    fun finish() {
         appRouter.closeApp()
     }
 
-    fun toMainFlow(){
+    fun toMainFlow() {
         appRouter.toMainFlow()
+    }
+
+    fun toAdmin(id: String) {
+        appRouter.toAdmin(id)
     }
 }

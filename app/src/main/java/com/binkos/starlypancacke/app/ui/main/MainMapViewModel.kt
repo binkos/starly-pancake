@@ -60,14 +60,18 @@ class MainMapViewModel(
         featureRouter.navigateTo(OrganizationFragmentScreen(name))
     }
 
-    fun backToMap() {
-        featureRouter.backTo(MapFragmentScreen())
-    }
-
     fun logout() {
         launch {
             logoutUseCase.logout()
             appRouter.toAuthFlow()
         }
+    }
+
+    fun toTermsConditions(){
+        appRouter.toTermsConditions()
+    }
+
+    fun toPrivacyPolicy(){
+        appRouter.toPrivacyPolicy()
     }
 }

@@ -75,10 +75,22 @@
           android:fontFamily="@font/firago_bold"
           android:text="@string/menu"
           android:textSize="@dimen/size_24"
+          android:visibility="invisible"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
           tools:text="Menu" />
+
+      <ImageView
+          android:id="@+id/createMenuItemView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          app:layout_constraintBottom_toBottomOf="@+id/titleMenuTextView"
+          app:layout_constraintEnd_toEndOf="parent"
+          android:layout_marginEnd="@dimen/margin_16"
+          android:background="@drawable/ic_create_52_black"
+          android:visibility="invisible"
+          app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
 
       <androidx.recyclerview.widget.RecyclerView
           android:id="@+id/menuRecyclerView"

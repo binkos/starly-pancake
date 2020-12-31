@@ -18,7 +18,8 @@ fun Organization.toDb() = OrganizationDb(
     icon = this.icon,
     photos = this.photos,
     description = this.description,
-    menu = menu.map { it.toDb() }
+    menu = menu.map { it.toDb() },
+    ownersId = ownersId
 )
 
 fun Food.toDb() = FoodDb(
